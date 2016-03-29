@@ -8,7 +8,7 @@ var jokes = require("./model/jokesMongo");
 var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var redisSession = require('./routes/redisSession');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', routes);
-app.use('/users', users);
+app.use('/users', redisSession);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
